@@ -23,7 +23,7 @@
     Math: {
       Algebra: 0.5,
       Trigonometry: 0.21,
-      Statistics: 0.42,
+      "Prob. & Stats": 0.42,
     },
     Science: {
       Biology: 0.42,
@@ -31,7 +31,7 @@
       Physics: 0.5,
     },
     "General Knowledge": {
-      Economy: 0.42,
+      "Social Studies": 0.42,
       Psychology: 0.21,
       Environment: 0.5,
     },
@@ -104,10 +104,12 @@
     <Dialog.Content
       class="font-pixel absolute inset-0 z-60 flex min-h-screen w-full items-center justify-center px-4 text-white"
     >
-      <div class=" bg-wood clip-pixel border-pixel-wood w-sm max-w-full space-y-4 px-8 py-6">
+      <div class="bg-wood clip-pixel border-pixel-wood w-md max-w-full space-y-4 px-8 py-6">
         <div class="relative">
           <Dialog.Title class="text-2xl">Profile</Dialog.Title>
-          <Dialog.Close class="absolute top-0 right-0 w-6 cursor-pointer text-2xl">x</Dialog.Close>
+          <Dialog.Close class="absolute top-0 right-0 w-6 cursor-pointer text-2xl font-bold"
+            >x</Dialog.Close
+          >
           <div class="flex gap-x-4">
             <img src={pfpLink} alt="" class="h-auto w-auto object-contain" />
             <div class="flex-grow">
