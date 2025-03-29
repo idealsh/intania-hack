@@ -3,12 +3,13 @@
 @theme {
   --color-wood: #5c4334;
   --font-pixel: "Fusion Pixel 10px Proportional SC", sans-serif;
+  --font-body: "Onest Variable", sans-serif;
 }
 
 @layer utilities {
-  
   @keyframes bob {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
@@ -58,5 +59,3 @@
 .border-pixel-button {
   border-image: url(/button-border.svg) 2/4px/0px stretch;
 }
-
-

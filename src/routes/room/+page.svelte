@@ -62,16 +62,22 @@
           </div>
         </div>
       </div>
-      <div class="w-64">
+      <div class="">
         <p class="mb-2 text-xl">Daily tasks:</p>
         <ul>
-          <li>
-            [{oneIslandFinished ? "x" : " "}]
-            <span class:line-through={oneIslandFinished}>Explore 1 island</span>
+          <li class="flex justify-between gap-x-6">
+            <div>
+              [{oneIslandFinished ? "x" : " "}]
+              <span class:line-through={oneIslandFinished}>Explore 1 island</span>
+            </div>
+            <span>+15XP</span>
           </li>
-          <li>
-            [{allIslandsFinished ? "x" : " "}]
-            <span class:line-through={allIslandsFinished}>Complete all islands</span>
+          <li class="flex justify-between gap-x-6">
+            <div>
+              [{allIslandsFinished ? "x" : " "}]
+              <span class:line-through={allIslandsFinished}>Complete all islands</span>
+            </div>
+            <span>+30XP</span>
           </li>
         </ul>
       </div>
@@ -90,7 +96,7 @@
       <!-- <div class="w-1/2 flex-grow"></div> -->
     </div>
     <div class="pb-8">
-      <Button class="px-8 text-2xl font-bold uppercase">Start adventure!</Button>
+      <Button class="px-8 py-4 text-2xl font-bold uppercase">Start adventure!</Button>
     </div>
   </div>
   <Dialog.Portal>

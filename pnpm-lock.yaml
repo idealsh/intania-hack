@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/onest':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@fontsource/fusion-pixel-10px-proportional-sc':
         specifier: ^5.2.5
         version: 5.2.5
@@ -237,6 +240,9 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
+
+  '@fontsource-variable/onest@5.2.7':
+    resolution: {integrity: sha512-iGsSGXwdqvaG5zJ6pmt7TKakYd5ADCzEZ4SPpaeueHrNiK3i6IbKrap4aK5vlak9E275BAHXv8Ac134r/PBREA==}
 
   '@fontsource/fusion-pixel-10px-proportional-sc@5.2.5':
     resolution: {integrity: sha512-eeqKd/GYXwifzsFy4AfK+Q3L5h1dXAzLH05GxmQEqgEf+Mw2hORLlw6v8wQ5DrgBz8MM0ildxrVRRcTSKVWFSg==}
@@ -1263,6 +1269,8 @@ snapshots:
       '@floating-ui/utils': 0.2.9
 
   '@floating-ui/utils@0.2.9': {}
+
+  '@fontsource-variable/onest@5.2.7': {}
 
   '@fontsource/fusion-pixel-10px-proportional-sc@5.2.5': {}
 
