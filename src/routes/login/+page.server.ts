@@ -14,7 +14,7 @@ interface LoginSuccess {
 }
 
 export const actions = {
-  default: async ({ request, fetch }) => {
+  default: async ({ request, fetch, cookies }) => {
     const data = await request.formData();
     const action = getOr400(data, "action");
     const username = getOr400(data, "username");
@@ -32,9 +32,10 @@ export const actions = {
       const data = await res.json();
 
       if (res.ok) {
-        return data as LoginSuccess;
+        cookies.set("token", data.token, { path: "/" });
+        return { success: true };
       } else {
-        return fail(res.status, data.error ?? "Cannot login");
+        return fail(res.status, { error: data.error ?? "Cannot login" });
       }
     };
 
@@ -50,10 +51,10 @@ export const actions = {
       });
 
       if (res.ok) {
-        return login();
+        return await login();
       }
     } else if (action === "login") {
-      return login();
+      return await login();
     }
   },
 } satisfies Actions;

@@ -10,7 +10,7 @@
   const oneIslandFinished = true;
   const allIslandsFinished = false;
 
-  const streak = 100;
+  const streak = 99;
   const level = 4;
   const currentXP = 42;
 
@@ -43,10 +43,10 @@
     class="font-pixel flex min-h-screen flex-col items-center justify-center bg-stone-900 to-30% px-6 py-8 text-white"
   >
     <div
-      class="relative flex w-full flex-grow flex-col justify-start gap-y-6 sm:flex-row sm:justify-between sm:gap-y-12"
+      class="relative flex w-full flex-grow flex-col justify-start gap-x-4 gap-y-6 sm:flex-row sm:justify-between sm:gap-y-12"
     >
       <div class="h-full sm:w-1/2">
-        <div class="w-80">
+        <div class="w-full sm:w-80">
           <div class="space-y-4">
             <Dialog.Trigger
               class="group bg-wood border-pixel-wood clip-pixel flex w-full cursor-pointer items-center justify-between px-6 py-3 text-left transition-all hover:scale-105"
@@ -62,8 +62,8 @@
           </div>
         </div>
       </div>
-      <div class="">
-        <p class="mb-2 text-xl">Daily tasks:</p>
+      <div class="px-4">
+        <p class="mb-2 text-lg sm:text-xl">Daily tasks:</p>
         <ul>
           <li class="flex justify-between gap-x-6">
             <div>
