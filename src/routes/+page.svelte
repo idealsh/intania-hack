@@ -1,9 +1,7 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
 </script>
-
-<!-- <h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p> -->
 
 <div
   class="relative flex min-h-screen w-full items-center justify-center bg-[url(/sky.jpg)] bg-cover"
@@ -16,6 +14,6 @@
       <br />
       Vero quasi atque inventore laborum, facere in!
     </p>
-    <Button>Play now</Button>
+    <Button onclick={() => goto("/login")}>Play now</Button>
   </div>
 </div>

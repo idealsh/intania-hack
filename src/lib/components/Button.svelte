@@ -12,7 +12,7 @@
 
 <button
   class={twMerge(
-    "group font-pixel relative z-0 min-h-11 cursor-pointer px-8 py-4 text-xl text-amber-950",
+    "group font-pixel relative z-0 min-h-11 cursor-pointer px-8 py-2 text-xl text-amber-950",
     className,
   )}
   {onclick}
