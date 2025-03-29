@@ -4,8 +4,7 @@
   --font-pixel: "Fusion Pixel 10px Proportional SC", sans-serif;
 }
 
-.border-pixel {
-  border-image: url(/button-border.svg) 2/4px/0px stretch;
+.clip-pixel {
   clip-path: polygon(
     4px 0px,
     4px 2px,
@@ -29,4 +28,12 @@
     calc(100% - 4px) 2px,
     calc(100% - 4px) 0px
   );
+}
+
+.border-pixel-progress {
+  border-image: url(/progress-border.svg) 2/4px/0px stretch;
+}
+
+.border-pixel-button {
+  border-image: url(/button-border.svg) 2/4px/0px stretch;
 }
