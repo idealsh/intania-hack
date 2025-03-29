@@ -1,6 +1,7 @@
 <script>
   import Button from "$lib/components/Button.svelte";
   import Meter from "$lib/components/Meter.svelte";
+  import { goto } from "$app/navigation";
 
   import { Dialog } from "bits-ui";
   import { twMerge } from "tailwind-merge";
@@ -36,6 +37,10 @@
       Environment: 0.5,
     },
   };
+
+  function navigateToExplore() {
+    goto("/explore");
+  }
 </script>
 
 <Dialog.Root>
@@ -96,7 +101,9 @@
       <!-- <div class="w-1/2 flex-grow"></div> -->
     </div>
     <div class="pb-8">
-      <Button class="px-8 py-4 text-2xl font-bold uppercase">Start adventure!</Button>
+      <Button onclick={() => navigateToExplore()} class="px-8 py-4 text-2xl font-bold uppercase"
+        >Start adventure!</Button
+      >
     </div>
   </div>
   <Dialog.Portal>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/Button.svelte";
+  import { goto } from "$app/navigation";
   type Island = {
     name: string;
     img: string;
@@ -16,29 +17,35 @@
   function selectIsland(island: Island) {
     selectedIsland = island.name;
   }
+
+  function goToIsland(island: Island) {
+    const islandName = island.name.toLowerCase();
+    goto(`/quiz/${islandName}`);
+  }
 </script>
 
 <div
   class="flex min-h-screen flex-col items-center justify-center space-y-20 bg-black p-4 text-white"
 >
   <!-- Banner with text overlay -->
-  <div class="relative h-20 w-[250px] md:w-[320px] -translate-y-10">
+  <div class="relative h-20 w-[250px] -translate-y-10 md:w-[320px]">
     <!-- The Banner Image -->
     <img src="/islands/banner.png" alt="banner" class="h-full w-full" />
 
     <!-- Centered Overlay Text -->
     <h1
-      class="absolute inset-0 flex items-center justify-center px-2 text-center text-md font-bold text-black md:text-xl"
+      class="text-md absolute inset-0 flex items-center justify-center px-2 text-center font-bold text-black md:text-xl"
     >
       Choose Island to Explore
     </h1>
   </div>
-  <div class="flex flex-wrap justify-center gap-8 md:gap-26 -translate-y-10">
+  <div class="flex -translate-y-10 flex-wrap justify-center gap-8 md:gap-26">
     {#each islands as island}
       <button
         type="button"
         class="relative flex w-40 flex-col items-center focus:outline-none md:w-98"
-        on:click={() => selectIsland(island)}
+        on:click={() => goToIsland(island)}
+        on:mouseenter={() => selectIsland(island)}
       >
         <p class="mt-2 text-lg md:text-3xl">{island.name}</p>
         <div
@@ -47,7 +54,7 @@
           <img
             src={island.img}
             alt={island.name}
-            class={`h-auto w-full cursor-pointer object-contain transition duration-500 hover:scale-110 ${selectedIsland === island.name ? "animate-bob" : ""}`}
+            class={`h-auto w-full cursor-pointer object-contain transition duration-500 ${selectedIsland === island.name ? "animate-bob" : ""}`}
           />
         </div>
         {#if island.progress === "check"}
@@ -69,7 +76,7 @@
               class="h-full w-full object-contain"
             />
             <span
-              class="absolute -translate-y-1.5 text-md font-bold text-black md:-translate-y-2 md:text-xl"
+              class="text-md absolute -translate-y-1.5 font-bold text-black md:-translate-y-2 md:text-xl"
               >{island.progress}</span
             >
           </div>
@@ -78,7 +85,6 @@
     {/each}
   </div>
   <!-- GO BUTTON -->
-
 </div>
 
 <style>
