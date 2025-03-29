@@ -75,42 +75,41 @@
   <Dialog.Portal>
     <Dialog.Overlay class="fixed inset-0 z-50 bg-black/50" />
     <Dialog.Content
-      class="font-pixel bg-wood border-pixel-wood clip-pixel absolute top-1/2 left-1/2 z-60 max-w-full -translate-x-1/2 -translate-y-1/2 space-y-4 px-8 py-6 text-white outline-none"
+      class="font-pixel absolute inset-0 z-60 flex min-h-screen w-full items-center justify-center px-4 text-white"
     >
-      <div class="relative">
-        <Dialog.Title class="text-2xl">Profile</Dialog.Title>
-        <Dialog.Close class="absolute top-0 right-0 w-6 text-2xl">x</Dialog.Close>
-        <div class="flex">
-          <img src="/fire.png" alt="" />
-          <div>
-            <p>Ideal</p>
-            <Meter label="Level 10" unit="XP" min={0} max={100} value={42}></Meter>
+      <div class=" bg-wood clip-pixel border-pixel-wood w-sm max-w-full space-y-4 px-8 py-6">
+        <div class="relative">
+          <Dialog.Title class="text-2xl">Profile</Dialog.Title>
+          <Dialog.Close class="absolute top-0 right-0 w-6 text-2xl">x</Dialog.Close>
+          <div class="flex">
+            <img src="/fire.png" alt="" />
+            <div>
+              <p>Ideal</p>
+              <Meter label="Level 10" unit="XP" min={0} max={100} value={42}></Meter>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <h1 class="text-2xl">Skills</h1>
-        <div class="grid w-120 grid-cols-[auto_1fr] items-center gap-x-4">
-          {#each Object.entries(stats) as [title, scores], i}
-            <!-- <div> -->
-
-            <h2 class="col-span-2 mt-3 mb-1 text-lg font-bold">{title}</h2>
-            <!-- <div class="grid grid-cols-[auto_1fr] items-center gap-x-4"> -->
-            {#each Object.entries(scores) as [name, value]}
-              <span>{name}</span>
-              <Meter
-                min={0}
-                max={1}
-                {value}
-                baronly
-                class={twMerge(
-                  i === 0 && "hue-rotate-90",
-                  i === 1 && "hue-rotate-30",
-                  i === 2 && "brightness-125 hue-rotate-280",
-                )}
-              />
+        <div>
+          <h1 class="text-2xl">Skills</h1>
+          <div class="grid w-full grid-cols-[auto_1fr] items-center gap-x-4">
+            {#each Object.entries(stats) as [title, scores], i}
+              <h2 class="col-span-2 mt-3 mb-1 text-lg font-bold">{title}</h2>
+              {#each Object.entries(scores) as [name, value]}
+                <span>{name}</span>
+                <Meter
+                  min={0}
+                  max={1}
+                  {value}
+                  baronly
+                  class={twMerge(
+                    i === 0 && "hue-rotate-90",
+                    i === 1 && "hue-rotate-30",
+                    i === 2 && "brightness-125 hue-rotate-280",
+                  )}
+                />
+              {/each}
             {/each}
-          {/each}
+          </div>
         </div>
       </div>
     </Dialog.Content>
