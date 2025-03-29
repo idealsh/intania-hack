@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Button from "$lib/components/Button.svelte";
   import { goto } from "$app/navigation";
   type Island = {
     name: string;
@@ -14,10 +13,6 @@
     { name: "Science", img: "/islands/Science.png", progress: "check" },
   ];
 
-  function selectIsland(island: Island) {
-    selectedIsland = island.name;
-  }
-
   function goToIsland(island: Island) {
     const islandName = island.name.toLowerCase();
     goto(`/quiz/${islandName}`);
@@ -25,31 +20,41 @@
 </script>
 
 <div
-  class="flex min-h-screen flex-col items-center justify-center space-y-20 bg-black p-4 text-white"
+  class="font-pixel flex min-h-screen flex-col items-center justify-center space-y-20 bg-stone-900 p-4 text-white"
 >
-  <!-- Banner with text overlay -->
-  <div class="relative h-20 w-[250px] -translate-y-10 md:w-[320px]">
-    <!-- The Banner Image -->
-    <img src="/islands/banner.png" alt="banner" class="h-full w-full" />
+  <div class="flex w-full items-center sm:mb-36 sm:px-12">
+    <div class="w-1/2 flex-grow">
+      <button
+        class="cursor-pointer rounded-lg px-4 py-2 text-lg hover:bg-white/10 md:text-xl"
+        onclick={() => goto("/room")}
+      >
+        ← Back <span class="hidden sm:inline">to room</span>
+      </button>
+    </div>
+    <!-- Banner with text overlay -->
+    <div class="relative h-20">
+      <!-- The Banner Image -->
+      <img src="/islands/banner.png" alt="banner" class="h-full w-full" />
 
-    <!-- Centered Overlay Text -->
-    <h1
-      class="text-md absolute inset-0 flex items-center justify-center px-2 text-center font-bold text-black md:text-xl"
-    >
-      Choose Island to Explore
-    </h1>
+      <!-- Centered Overlay Text -->
+      <h1
+        class="text-md absolute inset-0 flex items-center justify-center px-2 text-center font-bold text-black md:text-xl"
+      >
+        Choose Island to Explore
+      </h1>
+    </div>
+    <div class="w-1/2 flex-grow"></div>
   </div>
   <div class="flex -translate-y-10 flex-wrap justify-center gap-8 md:gap-26">
     {#each islands as island}
       <button
         type="button"
         class="relative flex w-40 flex-col items-center focus:outline-none md:w-98"
-        on:click={() => goToIsland(island)}
-        on:mouseenter={() => selectIsland(island)}
+        onclick={() => goToIsland(island)}
       >
         <p class="mt-2 text-lg md:text-3xl">{island.name}</p>
         <div
-          class={`w-full p-1 transition duration-300 ${selectedIsland === island.name ? "drop-shadow-[0_0_30px_rgba(254,241,134,10)]" : ""}`}
+          class={`w-full p-1 transition duration-300 hover:drop-shadow-[0_0_30px_rgb(254,230,133,0.3)]`}
         >
           <img
             src={island.img}
@@ -86,11 +91,3 @@
   </div>
   <!-- GO BUTTON -->
 </div>
-
-<style>
-  h1,
-  p,
-  span {
-    font-family: "Fusion Pixel 10px Proportional SC", sans-serif;
-  }
-</style>
