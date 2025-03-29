@@ -5,11 +5,25 @@
   import { Dialog } from "bits-ui";
   import { twMerge } from "tailwind-merge";
 
+  const name = "Ideal";
+
+  const oneIslandFinished = true;
+  const allIslandsFinished = false;
+
+  const streak = 100;
+  const level = 4;
+  const currentXP = 42;
+
+  const isBoy = true;
+
+  const pfpLink = isBoy ? "/pfpboy.png" : "/pfpgirl.png";
+  const idleAvatarLink = isBoy ? "/boyidle.gif" : "/girlidle.gif";
+
   const stats = {
     Math: {
-      Stats: 0.42,
-      Trigonometry: 0.21,
       Algebra: 0.5,
+      Trigonometry: 0.21,
+      Statistics: 0.42,
     },
     Science: {
       Biology: 0.42,
@@ -17,7 +31,7 @@
       Physics: 0.5,
     },
     "General Knowledge": {
-      Econ: 0.42,
+      Economy: 0.42,
       Psychology: 0.21,
       Environment: 0.5,
     },
@@ -37,21 +51,28 @@
             <Dialog.Trigger
               class="group bg-wood border-pixel-wood clip-pixel flex w-full cursor-pointer items-center justify-between px-6 py-3 text-left transition-all hover:scale-105"
             >
-              <p class="text-xl font-bold">User</p>
+              <p class="text-xl font-bold">{name}</p>
               <div class="-mx-1.5 inline-flex -translate-x-2 items-center gap-x-1">
                 <img src="/fire.png" alt="" class="h-6" />
-                <span>100 days</span>
+                <span>{streak} days</span>
               </div>
             </Dialog.Trigger>
-            <Meter label="Level 10" unit="XP" min={0} max={100} value={42} class="px-4"></Meter>
+            <Meter label="Level {level}" unit="XP" min={0} max={100} value={42} class="px-4"
+            ></Meter>
           </div>
         </div>
       </div>
       <div class="w-64">
         <p class="mb-2 text-xl">Daily tasks:</p>
         <ul>
-          <li>- Explore 1 island</li>
-          <li>- Complete all islands</li>
+          <li>
+            [{oneIslandFinished ? "x" : " "}]
+            <span class:line-through={oneIslandFinished}>Explore 1 island</span>
+          </li>
+          <li>
+            [{allIslandsFinished ? "x" : " "}]
+            <span class:line-through={allIslandsFinished}>Complete all islands</span>
+          </li>
         </ul>
       </div>
       <div class="inset-0 flex items-center justify-center sm:absolute sm:mt-12">
@@ -60,7 +81,7 @@
         >
           <img src="/rooms/room1.png" alt="" srcset="" />
           <img
-            src="/boyidle.gif"
+            src={idleAvatarLink}
             alt=""
             class="absolute right-[25%] bottom-[12%] h-[20%] -translate-x-1/2 -translate-y-1/2"
           />
@@ -80,12 +101,12 @@
       <div class=" bg-wood clip-pixel border-pixel-wood w-sm max-w-full space-y-4 px-8 py-6">
         <div class="relative">
           <Dialog.Title class="text-2xl">Profile</Dialog.Title>
-          <Dialog.Close class="absolute top-0 right-0 w-6 text-2xl">x</Dialog.Close>
-          <div class="flex">
-            <img src="/fire.png" alt="" />
-            <div>
-              <p>Ideal</p>
-              <Meter label="Level 10" unit="XP" min={0} max={100} value={42}></Meter>
+          <Dialog.Close class="absolute top-0 right-0 w-6 cursor-pointer text-2xl">x</Dialog.Close>
+          <div class="flex gap-x-4">
+            <img src={pfpLink} alt="" class="h-auto w-auto object-contain" />
+            <div class="flex-grow">
+              <p>{name}</p>
+              <Meter label="Level {level}" unit="XP" min={0} max={100} value={currentXP}></Meter>
             </div>
           </div>
         </div>
