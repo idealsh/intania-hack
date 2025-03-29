@@ -4,16 +4,18 @@
 
   interface Props {
     children: Snippet;
+    onclick?: () => unknown;
     class?: string;
   }
-  const { children, class: className }: Props = $props();
+  const { children, class: className, onclick }: Props = $props();
 </script>
 
 <button
   class={twMerge(
-    "group font-pixel relative z-0 min-h-11 cursor-pointer px-8 py-4 text-xl text-amber-950",
+    "group font-pixel relative z-0 min-h-11 cursor-pointer px-8 py-2 text-xl text-amber-950",
     className,
   )}
+  {onclick}
 >
   <div class="transition-transform group-active:translate-y-0.5">
     {@render children()}

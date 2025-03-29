@@ -1,15 +1,18 @@
 <script lang="ts">
   import { Meter, useId } from "bits-ui";
+  import { twMerge } from "tailwind-merge";
 
   interface Props {
-    label: string;
+    label?: string;
     min: number;
     max: number;
     value: number;
     unit?: string;
+    baronly?: boolean;
+    class?: string;
   }
 
-  const { label, min, max, value, unit }: Props = $props();
+  const { label, min, max, value, unit, baronly, class: className = "" }: Props = $props();
 
   const labelId = useId();
 
@@ -24,18 +27,20 @@
   // });
 </script>
 
-<div class="flex w-full flex-col gap-2">
-  <div class="flex items-center justify-between font-medium">
-    <span id={labelId}>{label}</span>
-    <span>{value} / {max}{unit ? " " + unit : ""}</span>
-  </div>
+<div class={twMerge("flex w-full flex-col gap-2", className)}>
+  {#if !(baronly ?? false)}
+    <div class="flex items-center justify-between gap-x-4 font-medium">
+      <span id={labelId}>{label}</span>
+      <span>{value} / {max}{unit ? " " + unit : ""}</span>
+    </div>
+  {/if}
   <Meter.Root
     aria-labelledby={labelId}
     aria-valuetext="{value} out of {max}"
     {value}
     {min}
     {max}
-    class="clip-pixel shadow-mini-inset relative z-10 h-[15px] overflow-hidden bg-green-900/20"
+    class="clip-pixel shadow-mini-inset relative z-10 h-[15px] overflow-hidden bg-green-950/50"
   >
     <div class="border-pixel-progress clip-pixel absolute inset-0 z-0 h-full w-full"></div>
     <div
