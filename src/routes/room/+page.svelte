@@ -1,7 +1,7 @@
 <script>
+  import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import Meter from "$lib/components/Meter.svelte";
-  import { goto } from "$app/navigation";
 
   import { Dialog } from "bits-ui";
   import { twMerge } from "tailwind-merge";
@@ -37,10 +37,6 @@
       Environment: 0.5,
     },
   };
-
-  function navigateToExplore() {
-    goto("/explore");
-  }
 </script>
 
 <Dialog.Root>
@@ -90,20 +86,20 @@
         <div
           class="relative aspect-square max-h-[70vh] w-128 drop-shadow-[0_0_100px_rgba(255,184,106,0.3)] select-none"
         >
-          <img src="/rooms/room1.png" alt="" srcset="" />
+          <img src="/rooms/room{level}.png" alt="" srcset="" />
           <img
             src={idleAvatarLink}
             alt=""
-            class="absolute right-[25%] bottom-[12%] h-[20%] -translate-x-1/2 -translate-y-1/2"
+            class="absolute right-[20%] bottom-[13%] h-[20%] -translate-x-1/2 -translate-y-1/2"
           />
         </div>
       </div>
       <!-- <div class="w-1/2 flex-grow"></div> -->
     </div>
     <div class="pb-8">
-      <Button onclick={() => navigateToExplore()} class="px-8 py-4 text-2xl font-bold uppercase"
-        >Start adventure!</Button
-      >
+      <Button class="px-8 py-4 text-2xl font-bold uppercase" onclick={() => goto("/explore")}>
+        Start adventure!
+      </Button>
     </div>
   </div>
   <Dialog.Portal>
