@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --color-wood: #5c4334;
   --font-pixel: "Fusion Pixel 10px Proportional SC", sans-serif;
 }
 
@@ -44,6 +45,10 @@
     calc(100% - 4px) 2px,
     calc(100% - 4px) 0px
   );
+}
+
+.border-pixel-wood {
+  border-image: url(/wood-border.svg) 2/4px/0px stretch;
 }
 
 .border-pixel-progress {
