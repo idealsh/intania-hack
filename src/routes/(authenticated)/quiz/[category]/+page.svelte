@@ -44,7 +44,7 @@
   <title>{category} Trivia - Question {currentQuestionIndex + 1}</title>
 </svelte:head>
 
-<div class="font-body mx-auto justify-items-center bg-black p-8">
+<div class="font-body mx-auto justify-items-center bg-stone-900 p-8">
   {#if questions.length > 0}
     <!-- Progress bar -->
     <div class="relative mb-8 h-5 w-full max-w-2xl rounded-xl bg-stone-600">
