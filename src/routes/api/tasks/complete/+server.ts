@@ -23,7 +23,7 @@ export async function POST({ request }: RequestEvent) {
         // Step 1: Check if the task exists and is not already completed
         const { data: task, error: taskError } = await supabase
             .from('daily_tasks')
-            .select('id, trivia_id, completed')
+            .select('id, trivia_id, completed, island_id, sub_category_id')
             .eq('id', task_id)
             .single();
 

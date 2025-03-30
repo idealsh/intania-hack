@@ -77,7 +77,9 @@ async function generateDailyTasks(today: string) {
                 taskInserts.push({
                     trivia_id: question.id,
                     assigned_date: today,
-                    completed: false
+                    completed: false,
+                    sub_category_id: question.sub_category_id,
+                    island_id: island.id
                 });
                 uniqueTriviaIds.add(question.id);
             }
