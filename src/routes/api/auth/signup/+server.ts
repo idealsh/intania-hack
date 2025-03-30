@@ -35,6 +35,24 @@ export async function POST({ request }: RequestEvent) {
 
         const hashedPassword = await hashPassword(password);
 
+        const defaultStats = {
+            Math: {
+              Algebra: 0.5,
+              Trigonometry: 0.21,
+              "Prob. & Stats": 0.42,
+            },
+            Science: {
+              Biology: 0.42,
+              Chemistry: 0.21,
+              Physics: 0.5,
+            },
+            "General Knowledge": {
+              "Social Studies": 0.42,
+              Psychology: 0.21,
+              Environment: 0.5,
+            },
+          };
+
         const { data, error } = await supabase
             .from('users')
             .insert([
@@ -45,8 +63,9 @@ export async function POST({ request }: RequestEvent) {
                     gender,
                     xp: 0,
                     level: 1,
-                    streak: 0
-                }
+                    streak: 0,
+                    stats: defaultStats,
+                },
             ])
             .select()
             .single();
