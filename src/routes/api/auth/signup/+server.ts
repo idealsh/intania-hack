@@ -6,13 +6,14 @@ interface SignUpBody {
     username: string;
     password: string;
     email: string;
+    gender: string;
 }
 
 export async function POST({ request }: RequestEvent) {
     try {
-        const { username, password, email }: SignUpBody = await request.json();
+        const { username, password, email, gender }: SignUpBody = await request.json();
 
-        if (!username || !password || !email) {
+        if (!username || !password || !email || !gender) {
             return new Response(
                 JSON.stringify({ error: 'All fields are required' }),
                 { status: 400, headers: { 'Content-Type': 'application/json' } }
@@ -24,7 +25,6 @@ export async function POST({ request }: RequestEvent) {
             .select('*')
             .eq('username', username)
             .single();
-
 
         if (existingUser) {
             return new Response(
@@ -42,6 +42,7 @@ export async function POST({ request }: RequestEvent) {
                     username,
                     password: hashedPassword,
                     email,
+                    gender,
                     xp: 0,
                     level: 1,
                     streak: 0
@@ -49,7 +50,6 @@ export async function POST({ request }: RequestEvent) {
             ])
             .select()
             .single();
-
 
         if (error) {
             return new Response(
@@ -66,6 +66,7 @@ export async function POST({ request }: RequestEvent) {
             { status: 201, headers: { 'Content-Type': 'application/json' } }
         );
     } catch (err) {
+        console.error('Signup Error:', err);
         return new Response(
             JSON.stringify({ message: 'Internal Error' }),
             { status: 500, headers: { 'Content-Type': 'application/json' } }
