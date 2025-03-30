@@ -104,7 +104,14 @@
           <h1 class="text-2xl">Skills</h1>
           <div class="grid w-full grid-cols-[auto_1fr] items-center gap-x-4">
             {#each Object.entries(data.stats) as [title, scores], i}
-              <h2 class="col-span-2 mt-3 mb-1 text-lg font-bold">{title}</h2>
+              <h2 class="col-span-2 mt-3 mb-1 text-lg font-bold">
+                <img
+                  src={i === 0 ? "math.png" : i === 1 ? "sci.png" : "gen.png"}
+                  alt=""
+                  class="inline h-6"
+                />
+                {title}
+              </h2>
               {#each Object.entries(scores) as [name, value]}
                 <span>{name}</span>
                 <Meter
