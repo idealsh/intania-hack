@@ -39,6 +39,7 @@
           name="username"
           class="border-pixel-wood clip-pixel block w-full bg-white/20 px-3 py-2 outline-none focus-visible:bg-white/30"
           placeholder="skibidi"
+          required
         />
       </label>
       {#if !isLogin}
@@ -49,6 +50,7 @@
             name="email"
             class="border-pixel-wood clip-pixel block w-full bg-white/20 px-3 py-2 outline-none focus-visible:bg-white/30"
             placeholder="user@example.com"
+            required
           />
         </label>
       {/if}
@@ -59,6 +61,7 @@
           type="password"
           class="border-pixel-wood clip-pixel block w-full bg-white/20 px-3 py-2 outline-none focus-visible:bg-white/30"
           placeholder="••••••••"
+          required
         />
       </label>
       {#if !isLogin}
