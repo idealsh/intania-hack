@@ -1,57 +1,79 @@
-import { supabase } from '../../../../lib/utils/supabase';
-import type { RequestEvent } from '@sveltejs/kit';
+import { supabase } from "../../../../lib/utils/supabase";
+import type { RequestEvent } from "@sveltejs/kit";
+import jwt from "jsonwebtoken";
 
-export async function GET({ request }: RequestEvent) {
+const JWT_SECRET = import.meta.env.VITE_JWT_SECRET;
+
+function verifyJWT(token: string): { id: string } | null {
+  try {
+    return jwt.verify(token, JWT_SECRET) as { id: string };
+  } catch {
+    return null;
+  }
+}
+
+export async function GET({ request, cookies }: RequestEvent) {
   try {
     // Get user_id from the request header (assumed to be passed from frontend)
-    const userId = request.headers.get('user_id');
+
+    const token = cookies.get("token");
+    if (!token)
+      return new Response(JSON.stringify({ error: "Not authenticated" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      });
+
+    const jwtData = verifyJWT(token);
+    if (jwtData === null)
+      return new Response(JSON.stringify({ error: "Invalid token" }), {
+        status: 403,
+        headers: { "Content-Type": "application/json" },
+      });
+
+    const userId = jwtData.id;
 
     // Validate user_id
     if (!userId) {
-      return new Response(
-        JSON.stringify({ error: 'User ID is required' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: "User ID is required" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     // Fetch user data from Supabase
     const { data: user, error: userError } = await supabase
-      .from('users')
-      .select('username, xp, level, streak, gender, stats')
-      .eq('id', userId)
+      .from("users")
+      .select("username, xp, level, streak, gender, stats")
+      .eq("id", userId)
       .single();
 
     if (userError || !user) {
-      console.error('Error fetching user:', userError?.message);
-      return new Response(
-        JSON.stringify({ error: 'User not found' }),
-        { status: 404, headers: { 'Content-Type': 'application/json' } }
-      );
+      console.error("Error fetching user:", userError?.message);
+      return new Response(JSON.stringify({ error: "User not found" }), {
+        status: 404,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     // Fetch completed tasks for this user
     const { data: completedTasks, error: taskError } = await supabase
-      .from('daily_tasks')
-      .select('island_id, completed')
-      .eq('user_id', userId)
-      .eq('completed', true);
+      .from("daily_tasks")
+      .select("island_id, completed")
+      .eq("user_id", userId)
+      .eq("completed", true);
 
     if (taskError) {
-      console.error('Error fetching tasks:', taskError.message);
+      console.error("Error fetching tasks:", taskError.message);
     }
 
     // Check completion status per island
-    const completedIslands = new Set(
-      completedTasks?.map((task) => task.island_id)
-    );
+    const completedIslands = new Set(completedTasks?.map((task) => task.island_id));
 
     // Check total islands available
-    const { data: islands, error: islandError } = await supabase
-      .from('islands')
-      .select('id');
+    const { data: islands, error: islandError } = await supabase.from("islands").select("id");
 
     if (islandError || !islands || islands.length === 0) {
-      console.error('Error fetching islands:', islandError?.message);
+      console.error("Error fetching islands:", islandError?.message);
     }
 
     const totalIslands = islands ? islands.length : 0;
@@ -60,7 +82,7 @@ export async function GET({ request }: RequestEvent) {
     const oneIslandFinished = completedIslands.size >= 1;
     const allIslandsFinished = completedIslands.size === totalIslands;
 
-    const isBoy = user.gender?.toLowerCase() === 'male';
+    const isBoy = user.gender?.toLowerCase() === "male";
 
     return new Response(
       JSON.stringify({
@@ -69,17 +91,17 @@ export async function GET({ request }: RequestEvent) {
         currentXP: user.xp,
         streak: user.streak,
         isBoy,
-        stats: user.stats, 
+        stats: user.stats,
         oneIslandFinished,
-        allIslandsFinished
+        allIslandsFinished,
       }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
+      { status: 200, headers: { "Content-Type": "application/json" } },
     );
   } catch (err) {
-    console.error(' Internal Server Error:', err);
-    return new Response(
-      JSON.stringify({ error: 'Internal Server Error' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    console.error(" Internal Server Error:", err);
+    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
