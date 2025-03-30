@@ -27,6 +27,30 @@ export const tempQuestions = {
         explain: "Solving for x: 3x = 9, so x = 3.",
         image: "https://upload.wikimedia.org/wikipedia/commons/2/27/Algebraic_equation.svg",
       },
+      {
+        subCat: "Algebra",
+        question: "You buy 1 cone of ice cream for $1.50. A shop gives a deal: Buy 4, get 1 free. How much would each cone have to cost individually to match the value of the deal?",
+        choices: ["$1.50","$1.20","$1.00"],
+        correctAnswer: "$1.20",
+        info: "This is a unit rate problem—an essential concept in algebra and economics",
+        explain: " In the deal, you pay for 4 cones ($1.50 × 4 = $6) and get 5 cones. So the cost per cone = $6 ÷ 5 = $1.20.",
+      },
+      {
+        subCat: "Geometry",
+        question: "What’s the minimum number of straight cuts needed to divide a pizza into 8 equal slices?",
+        choices: ["3","4","5"],
+        correctAnswer: "4",
+        info: "This is a classic example of spatial reasoning and 2D geometry, focusing on angles and symmetry.",
+        explain: "With creative placement, 3 cuts can give you 6 slices (if they all go through the center). To get 8, you need 4 straight cuts.",
+      },
+      {
+        subCat: "Statistics",
+        question: "You have 10 banana bunches; one bunch is fake and each banana in it weighs 10% less. You can weigh only once. Can you find the fake one?",
+        choices: ["Yes","No","I don't know"],
+        correctAnswer: "Yes",
+        info: "This is a smart use of weighted averages and difference detection.",
+        explain: " Label the bunches 1–10. Take 1 banana from bunch 1, 2 from bunch 2, etc., ending with 10 from bunch 10. If all bananas were normal, the total weight would be 550g (assuming 1 banana = 10g). But if the scale shows 549g, the 1g deficit means bunch 1 is fake. A 2g deficit means bunch 2, and so on.",
+      }
     ],
     science: [
       {
@@ -56,6 +80,30 @@ export const tempQuestions = {
         explain: "In a vacuum, where there is no air resistance, all objects fall at the same rate due to gravity.",
         image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Gravity_falling_objects.svg",
       },
+      {
+        subCat: "Physics",
+        question: "If you drop a rock from 1 meter on the Moon, will it fall slower or faster than on Earth?",
+        choices: ["Longer (about 2.5× longer)", "Same", "Shorter"],
+        correctAnswer: "Longer (about 2.5× longer)",
+        info: "Uses gravity difference between Earth and the Moon.",
+        explain: "Gravity on the Moon is 1.62 m/s² compared to Earth’s 9.8 m/s². Lower gravity means slower acceleration, so the rock falls more slowly—taking about 2.5× longer."
+      },
+      {
+        subCat: "Chemistry",
+        question: "How heavy is a 10×10×10 cm cube of solid gold? (Gold density ≈ 19.3 g/cm³)",
+        choices: ["19.3 kg", "50 kg", "19.3 g"],
+        correctAnswer: "19.3 kg",
+        info: "Applies density and volume to calculate mass.",
+        explain: "Volume = 1,000 cm³. Multiply by gold's density: 1,000 × 19.3 = 19,300g = 19.3 kg. This is how density relates to mass and volume."
+      },
+      {
+        subCat: "Biology",
+        question: "How long does it take for a red blood cell to complete one full circuit through the human body?",
+        choices: ["1 minute", "20 seconds", "5 minutes"],
+        correctAnswer: "20 seconds",
+        info: "Shows how efficiently the circulatory system works.",
+        explain: "Red blood cells travel quickly—pumped by the heart at around 5 liters/minute. One complete circulation loop takes only about 20 seconds under normal conditions."
+      }
     ],
     general: [
         {
@@ -85,5 +133,29 @@ export const tempQuestions = {
           explain: "CO2 traps heat in the atmosphere, contributing to climate change.",
           image: "https://upload.wikimedia.org/wikipedia/commons/8/88/Greenhouse_effect.svg",
         },
+        {
+          subCat: "Social Studies",
+          question: "If a person walks 5 km/hour for 8 hours a day, how many days would it take to walk around the Earth's equator (40,075 km)?",
+          choices: ["1,002 days", "502 days", "365 days"],
+          correctAnswer: "1,002 days",
+          info: "A real-world application of rate × time = distance.",
+          explain: "The person walks 5 km/hour × 8 hours = 40 km/day. Total distance is 40,075 km. 40,075 ÷ 40 = 1,001.875, so it would take about 1,002 days to complete the walk."
+        },
+        {
+          subCat: "Psychology",
+          question: "How fast can the human brain process a visual image?",
+          choices: ["250 milliseconds", "13 milliseconds", "100 milliseconds"],
+          correctAnswer: "13 milliseconds",
+          info: "Highlights the brain's incredible speed in visual processing.",
+          explain: "Studies by MIT show the brain can process images in as little as 13 milliseconds. This showcases the efficiency of the visual cortex and human perception."
+        },
+        {
+          subCat: "Environment",
+          question: "One tree absorbs about 22 kg of CO₂ per year. If driving 10,000 km emits about 0.12 kg/km, how many trees are needed to offset this?",
+          choices: ["55 trees", "22 trees", "100 trees"],
+          correctAnswer: "55 trees",
+          info: "Demonstrates carbon footprint and environmental offsetting.",
+          explain: "Driving 10,000 km at 0.12 kg/km emits 1,200 kg of CO₂. Divide by 22 kg per tree: 1,200 ÷ 22 ≈ 55 trees needed to offset that annually."
+        }
       ],
     };
