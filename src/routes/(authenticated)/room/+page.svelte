@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import Meter from "$lib/components/Meter.svelte";
@@ -6,37 +6,10 @@
   import { Dialog } from "bits-ui";
   import { twMerge } from "tailwind-merge";
 
-  const name = "Ideal";
+  const { data } = $props();
 
-  const oneIslandFinished = true;
-  const allIslandsFinished = false;
-
-  const streak = 99;
-  const level = 4;
-  const currentXP = 42;
-
-  const isBoy = true;
-
-  const pfpLink = isBoy ? "/pfpboy.png" : "/pfpgirl.png";
-  const idleAvatarLink = isBoy ? "/boyidle.gif" : "/girlidle.gif";
-
-  const stats = {
-    Math: {
-      Algebra: 0.5,
-      Trigonometry: 0.21,
-      "Prob. & Stats": 0.42,
-    },
-    Science: {
-      Biology: 0.42,
-      Chemistry: 0.21,
-      Physics: 0.5,
-    },
-    "General Knowledge": {
-      "Social Studies": 0.42,
-      Psychology: 0.21,
-      Environment: 0.5,
-    },
-  };
+  const pfpLink = data.isBoy ? "/pfpboy.png" : "/pfpgirl.png";
+  const idleAvatarLink = data.isBoy ? "/boyidle.gif" : "/girlidle.gif";
 </script>
 
 <Dialog.Root>
@@ -52,13 +25,19 @@
             <Dialog.Trigger
               class="group bg-wood border-pixel-wood clip-pixel flex w-full cursor-pointer items-center justify-between px-6 py-3 text-left transition-all hover:scale-105"
             >
-              <p class="text-xl font-bold">{name}</p>
+              <p class="text-xl font-bold">{data.name}</p>
               <div class="-mx-1.5 inline-flex -translate-x-2 items-center gap-x-1">
                 <img src="/fire.png" alt="" class="h-6" />
-                <span>{streak} days</span>
+                <span>{data.streak} days</span>
               </div>
             </Dialog.Trigger>
-            <Meter label="Level {level}" unit="XP" min={0} max={100} value={42} class="px-4"
+            <Meter
+              label="Level {data.level}"
+              unit="XP"
+              min={0}
+              max={100}
+              value={data.xp}
+              class="px-4"
             ></Meter>
           </div>
         </div>
@@ -68,15 +47,15 @@
         <ul>
           <li class="flex justify-between gap-x-6">
             <div>
-              [{oneIslandFinished ? "x" : " "}]
-              <span class:line-through={oneIslandFinished}>Explore 1 island</span>
+              [{data.oneIslandFinished ? "x" : " "}]
+              <span class:line-through={data.oneIslandFinished}>Explore 1 island</span>
             </div>
             <span>+15XP</span>
           </li>
           <li class="flex justify-between gap-x-6">
             <div>
-              [{allIslandsFinished ? "x" : " "}]
-              <span class:line-through={allIslandsFinished}>Complete all islands</span>
+              [{data.allIslandsFinished ? "x" : " "}]
+              <span class:line-through={data.allIslandsFinished}>Complete all islands</span>
             </div>
             <span>+30XP</span>
           </li>
@@ -86,7 +65,7 @@
         <div
           class="relative aspect-square max-h-[70vh] w-128 drop-shadow-[0_0_100px_rgba(255,184,106,0.3)] select-none"
         >
-          <img src="/rooms/room{level}.png" alt="" srcset="" />
+          <img src="/rooms/room{data.level}.png" alt="" srcset="" />
           <img
             src={idleAvatarLink}
             alt=""
@@ -116,15 +95,15 @@
           <div class="flex gap-x-4">
             <img src={pfpLink} alt="" class="h-auto w-auto object-contain" />
             <div class="flex-grow">
-              <p>{name}</p>
-              <Meter label="Level {level}" unit="XP" min={0} max={100} value={currentXP}></Meter>
+              <p>{data.name}</p>
+              <Meter label="Level {data.level}" unit="XP" min={0} max={100} value={data.xp}></Meter>
             </div>
           </div>
         </div>
         <div>
           <h1 class="text-2xl">Skills</h1>
           <div class="grid w-full grid-cols-[auto_1fr] items-center gap-x-4">
-            {#each Object.entries(stats) as [title, scores], i}
+            {#each Object.entries(data.stats) as [title, scores], i}
               <h2 class="col-span-2 mt-3 mb-1 text-lg font-bold">{title}</h2>
               {#each Object.entries(scores) as [name, value]}
                 <span>{name}</span>
