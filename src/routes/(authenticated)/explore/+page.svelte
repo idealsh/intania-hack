@@ -24,12 +24,12 @@
 >
   <div class="flex w-full items-center sm:mb-36 sm:px-12">
     <div class="w-1/2 flex-grow">
-      <button
+      <a
         class="cursor-pointer rounded-lg px-4 py-2 text-lg hover:bg-white/10 md:text-xl"
-        onclick={() => goto("/room")}
+        href="/room"
       >
         ← Back <span class="hidden sm:inline">to room</span>
-      </button>
+      </a>
     </div>
     <!-- Banner with text overlay -->
     <div class="relative h-20">
