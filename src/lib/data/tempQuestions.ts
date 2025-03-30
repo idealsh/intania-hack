@@ -36,12 +36,12 @@ export const tempQuestions = {
         explain: " In the deal, you pay for 4 cones ($1.50 × 4 = $6) and get 5 cones. So the cost per cone = $6 ÷ 5 = $1.20.",
       },
       {
-        subCat: "Geometry",
-        question: "What’s the minimum number of straight cuts needed to divide a pizza into 8 equal slices?",
-        choices: ["3","4","5"],
-        correctAnswer: "4",
-        info: "This is a classic example of spatial reasoning and 2D geometry, focusing on angles and symmetry.",
-        explain: "With creative placement, 3 cuts can give you 6 slices (if they all go through the center). To get 8, you need 4 straight cuts.",
+        "subCat": "Geometry",
+        "question": "The Great Pyramid of Giza in Egypt is a square-based pyramid with each side measuring 230.1 meters. If we want to rebuild a similar pyramid using rectangular bricks (30 x 30 x 19 cm), stacked layer by layer while reducing one row per side at each higher level, how many bricks would be needed?",
+        "choices": ["2 million", "2.3 million", "3 million"],
+        "correctAnswer": "2.3 million",
+        "info": "An applied geometry problem combining volume estimation and pyramid structure logic.",
+        "explain": "This is a layered structure, reducing 1 row per side per level. Calculate the total volume of the pyramid and divide it by the volume of one brick (0.3 × 0.3 × 0.19 = 0.0171 m³). Estimating the number of bricks with volume approximation results in about 2.3 million bricks."
       },
       {
         subCat: "Statistics",
@@ -72,13 +72,12 @@ export const tempQuestions = {
         image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/NaCl_structure.png",
       },
       {
-        subCat: "Physics",
-        question: "Which of the following objects will fall the fastest in a vacuum?",
-        choices: ["A feather", "A bowling ball", "A piece of paper", "All fall at the same rate"],
-        correctAnswer: "All fall at the same rate",
-        info: "Gravity pulls all objects downward at the same acceleration, but air resistance can slow some down.",
-        explain: "In a vacuum, where there is no air resistance, all objects fall at the same rate due to gravity.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Gravity_falling_objects.svg",
+        "subCat": "Physics",
+        "question": "Prince John draws his divine arrow, positioned 2 wa (4 meters) high, to fire straight at a demon’s forehead using a bow that launches at 10 wa/second. The demon is 10 times taller than John’s height, and a guard must fall vertically 1 wa (2 meters) in 3 seconds to hit the midpoint of the forehead. Assuming gravity g = 5 wa/s², what angle should John aim his arrow relative to the ground?",
+        "choices": ["15°", "30°", "45°"],
+        "correctAnswer": "30°",
+        "info": "A projectile motion problem involving vertical displacement, velocity, and angle calculation.",
+        "explain": "This question involves using trigonometric and projectile motion equations. The time and vertical drop are given. Using vertical motion equations and inverse trigonometry, we can solve for the launch angle, which turns out to be 30°."
       },
       {
         subCat: "Physics",
@@ -89,13 +88,13 @@ export const tempQuestions = {
         explain: "Gravity on the Moon is 1.62 m/s² compared to Earth’s 9.8 m/s². Lower gravity means slower acceleration, so the rock falls more slowly—taking about 2.5× longer."
       },
       {
-        subCat: "Chemistry",
-        question: "How heavy is a 10×10×10 cm cube of solid gold? (Gold density ≈ 19.3 g/cm³)",
-        choices: ["19.3 kg", "50 kg", "19.3 g"],
-        correctAnswer: "19.3 kg",
-        info: "Applies density and volume to calculate mass.",
-        explain: "Volume = 1,000 cm³. Multiply by gold's density: 1,000 × 19.3 = 19,300g = 19.3 kg. This is how density relates to mass and volume."
-      },
+        "subCat": "Chemistry",
+        "question": "Prince John must save a poisoned soldier exposed to a Lead(II) nitrate solution with a concentration of 497 g/L. The soldier absorbed 0.2 mL into his bloodstream. John must use Calcium Disodium EDTA as the antidote, which binds to lead in a 1:1 molar ratio. Given the antidote is in liquid form at 20 mg/mL and provided in 0.5 mL vials, what is the minimum number of vials needed?",
+        "choices": ["1 vial", "2 vials", "3 vials"],
+        "correctAnswer": "2 vials",
+        "info": "This question tests stoichiometry and molar mass calculations based on real-life medical chemistry.",
+        "explain": "Convert 0.2 mL of lead solution to grams: 497 g/L × 0.0002 L = 0.0994 g. Calculate moles of Pb²⁺ and use 1:1 ratio with EDTA. Given the solution is 20 mg/mL, and each vial is 0.5 mL, the minimum amount of antidote required is just under 2 vials, so you need at least 2 to fully neutralize the lead."
+      },      
       {
         subCat: "Biology",
         question: "How long does it take for a red blood cell to complete one full circuit through the human body?",
