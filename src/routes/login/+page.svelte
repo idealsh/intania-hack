@@ -94,12 +94,12 @@
 
     <p class="my-4 text-red-400">{form?.error}</p>
 
-    <div class="my-2 flex justify-between">
+    <div class="my-2 flex gap-x-6">
       <Button>{action}</Button>
       <button
         type="button"
         onclick={() => (isLogin = !isLogin)}
-        class="cursor-pointer hover:underline"
+        class="cursor-pointer text-lg hover:underline"
       >
         {#if isLogin}
           Sign up instead?
